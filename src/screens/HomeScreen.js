@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Dimensions, ScrollView, Image, FlatList } from 'react-native'
+import { View, Text, StyleSheet, Dimensions, ScrollView, Image, FlatList, TouchableOpacity } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 const SCREEN_WIDTH = Dimensions.get('window').width
 import { colors, parameters } from '../global/styles'
@@ -10,7 +10,7 @@ import MapView,{ PROVIDER_GOOGLE,Marker } from 'react-native-maps'
 import * as Location from 'expo-location';
 
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
 
 const [latlng,setLatLng] =useState({})
 
@@ -58,7 +58,7 @@ checkPermission()
 getLocation()
 
 },[])
-console.log(latlng);
+
 
 
   return (
@@ -78,9 +78,12 @@ console.log(latlng);
           <View style={styles.view1}>
             <View style={styles.view8}>
               <Text style={styles.text2}>Read a book.Take a nap.Stare out the window</Text>
-              <View style={styles.button1}>
+              <TouchableOpacity onPress={()=>{navigation.navigate("RequestScreen")}}> 
+                <View style={styles.button1}>
+                
                 <Text style={styles.button1Text}>Rider with Uber</Text>
-              </View>
+                
+              </View></TouchableOpacity>
             </View>
             <View>
               <Image style={styles.image1} source={require('../../assets/uberCar.png')} />

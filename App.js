@@ -1,12 +1,18 @@
+import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import HomeScreen from './src/screens/HomeScreen';
+import RootNavigator from './src/navigations/RootNavigator';
+import OriginalContextProvider, { DestinationContextProvider } from './src/contexts/context';
+
 
 export default function App() {
   return (
-    < >
-     <HomeScreen/>
-    </>
+    <DestinationContextProvider>
+    <OriginalContextProvider>
+<RootNavigator/>
+    </OriginalContextProvider>
+    </DestinationContextProvider>
+    
   );
 }
 
